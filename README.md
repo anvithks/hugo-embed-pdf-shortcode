@@ -32,11 +32,11 @@ cp -R ./static/js/pdf-js /path/to/your/hugo/website/static/js/
 
 # Usage
 
-In your Hugo website place the following shortcode :
-
+In your Hugo website place the following shortcode in any of the markdown pages. 
 ```
 {{< embed-pdf url="./path/to/pdf/file/example.pdf" >}}
 ```
+
 ### Parameters
 - **url (required)** : The relative location of the file.
 
