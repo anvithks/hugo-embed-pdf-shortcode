@@ -11,22 +11,22 @@ It is developed using the [PDF.js](https://mozilla.github.io/pdf.js/) library by
 ### 1. Clone this repository
 <br />
 
-```
-git clone git clone https://github.com/anvithks/hugo-embed-pdf-shortcode.git
+```shell
+git clone https://github.com/anvithks/hugo-embed-pdf-shortcode.git
 cd hugo-embed-pdf-shortcode
 ```
 
 ### 2. Copy the file `.layouts/shortcodes/embed-pdf.html` to  `./layouts/shortcodes` in your Hugo website directory.
 **Note:** If you do not have a `./layouts/shortcodes` directory you can create it.  
 
-```
+```shell
 cp ./layouts/shortcodes/embed-pdf.html /path/to/your/hugo/website/layouts/shortcodes
 ```
 
 ### 3. Copy the pdf.js library files from `./static/js/pdf-js` to `./static/js` in your Hugo website directory.
 **Note:** If you do not have a `./static/js` directory you can create it.  
 
-```
+```shell
 cp -R ./static/js/pdf-js /path/to/your/hugo/website/static/js/
 ```
 
