@@ -8,7 +8,7 @@ It is developed using the [PDF.js](https://mozilla.github.io/pdf.js/) library by
 
 **Note:**  This shortcode is for use in Hugo based websites. It will not work anywhere else. 
 
-### 1. Clone this repository
+1. Clone this repository
 <br />
 
 ```shell
@@ -16,14 +16,14 @@ git clone https://github.com/anvithks/hugo-embed-pdf-shortcode.git
 cd hugo-embed-pdf-shortcode
 ```
 
-### 2. Copy the file `.layouts/shortcodes/embed-pdf.html` to  `./layouts/shortcodes` in your Hugo website directory.
+2. Copy the file `.layouts/shortcodes/embed-pdf.html` to  `./layouts/shortcodes` in your Hugo website directory.  
 **Note:** If you do not have a `./layouts/shortcodes` directory you can create it.  
 
 ```shell
 cp ./layouts/shortcodes/embed-pdf.html /path/to/your/hugo/website/layouts/shortcodes
 ```
 
-### 3. Copy the pdf.js library files from `./static/js/pdf-js` to `./static/js` in your Hugo website directory.
+3. Copy the pdf.js library files from `./static/js/pdf-js` to `./static/js` in your Hugo website directory.  
 **Note:** If you do not have a `./static/js` directory you can create it.  
 
 ```shell
