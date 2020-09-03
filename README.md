@@ -4,12 +4,12 @@
 # Table of Contents  
 
 * [Online Demo](https://hugo-embed-pdf.netlify.app/)
-* [Introduction](#introduction)
-* [Setup](#setup)  
-* [Usage](#usage)  
-* [FAQ](#faq)  
-* [Support](#support)  
-* [License](#license)  
+* [Introduction](#introduction--back-to-top)
+* [Setup](#setup--back-to-top)  
+* [Usage](#usage--back-to-top)  
+* [FAQ](#faq--back-to-top)  
+* [Support](#support--back-to-top)  
+* [License](#license--back-to-top)  
 
 ---
 
