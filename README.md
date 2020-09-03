@@ -4,16 +4,16 @@
 # Table of Contents  
 
 * [Online Demo](https://hugo-embed-pdf.netlify.app/)
-* [Introduction](#introduction--back-to-top)
-* [Setup](#setup--back-to-top)  
-* [Usage](#usage--back-to-top)  
-* [FAQ](#faq--back-to-top)  
-* [Support](#support--back-to-top)  
-* [License](#license--back-to-top)  
+* [Introduction](#introduction-back-to-top)
+* [Setup](#setup-back-to-top)  
+* [Usage](#usage-back-to-top)  
+* [FAQ](#faq-back-to-top)  
+* [Support](#support-back-to-top)  
+* [License](#license-back-to-top)  
 
 ---
 
-## Introduction  [\[Back to Top\]](#table-of-contents)
+## Introduction [\[Back to Top\]](#table-of-contents)
 
 This is a [Hugo Shortcode](https://gohugo.io/extras/shortcodes/) developed for use in [Hugo](https://gohugo.io/) based websites. This shortcode allows you to embed a PDF file in a page on your Hugo website.  
 It is developed using the [PDF.js](https://mozilla.github.io/pdf.js/) library by Mozilla.
