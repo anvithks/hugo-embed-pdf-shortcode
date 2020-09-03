@@ -1,6 +1,7 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) ![visitors](https://visitor-badge.glitch.me/badge?page_id=anvithks.hugo-embed-pdf-shortcode)
 # hugo-embed-pdf-shortcode  
 ---  
+# Table of Contents  
 
 * [Online Demo](https://hugo-embed-pdf.netlify.app/)
 * [Introduction](#introduction)
@@ -12,14 +13,14 @@
 
 ---
 
-# Introduction  
+## Introduction  [\[Back to Top\]](#table-of-contents)
 
 This is a [Hugo Shortcode](https://gohugo.io/extras/shortcodes/) developed for use in [Hugo](https://gohugo.io/) based websites. This shortcode allows you to embed a PDF file in a page on your Hugo website.  
 It is developed using the [PDF.js](https://mozilla.github.io/pdf.js/) library by Mozilla.
 
 ![hugo-embed-pdf-shortcode cover](https://github.com/anvithks/hugo-embed-pdf-shortcode/blob/master/hugo-embed-pdf-cover.png)
 
-# Setup
+## Setup [\[Back to Top\]](#table-of-contents)
 
 **Note:**  This shortcode is for use in Hugo based websites. It will not work anywhere else. 
 
@@ -45,7 +46,7 @@ cp ./layouts/shortcodes/embed-pdf.html /path/to/your/hugo/website/layouts/shortc
 cp -R ./static/js/pdf-js /path/to/your/hugo/website/static/js/
 ```
 
-# Usage
+## Usage [\[Back to Top\]](#table-of-contents)
 
 In your Hugo website place the following shortcode in any of the markdown pages. 
 ```
@@ -58,16 +59,16 @@ In your Hugo website place the following shortcode in any of the markdown pages.
 **Note:** Currently supports local file embed. If absolute URL from the remote server is provided, configure the CORS header on that server.
 
 
-# FAQ
+## FAQ [\[Back to Top\]](#table-of-contents)
 
-# Support
+## Support [\[Back to Top\]](#table-of-contents)
 You an reach me at:
 - Twitter : [@anvith3](https://twitter.com/anvith3)
 
 For any bugs, enhancement requests, feature requests please raise issues [here](https://github.com/anvithks/hugo-embed-pdf-shortcode/issues)
 
 
-# License
+## License [\[Back to Top\]](#table-of-contents)
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
