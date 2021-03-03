@@ -28,6 +28,7 @@ window.onload = function() {
 // header on that server.
 
 var url = "{{.Site.BaseURL}}" + "{{ .Get "url" }}";
+var hidePaginator = "{{ .Get "hidePaginator" }}";
 
 // Loaded via <script> tag, create shortcut to access PDF.js exports.
 var pdfjsLib = window['pdfjs-dist/build/pdf'];
@@ -88,6 +89,13 @@ function queueRenderPage(num) {
   } else {
     renderPage(num);
   }
+}
+
+/**
+ * Optionally hides the paginator
+ */
+if (hidePaginator) {
+  document.getElementById("paginator").style.display = 'none';
 }
 
 /**
