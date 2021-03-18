@@ -60,7 +60,7 @@ In your Hugo website place the following shortcode in any of the markdown pages.
 
 ### Parameters
 - **url (required)** : The relative location of the file.  
-- **hidePaginator (optional)**: Hides the paginator for single page documents 
+- **hidePaginator (optional)**: Boolean which expects `true` or `false`. Hides the paginator for single page documents. 
 <br />
 
 **Note:** Currently supports local file embed. If absolute URL from the remote server is provided, configure the CORS header on that server.
