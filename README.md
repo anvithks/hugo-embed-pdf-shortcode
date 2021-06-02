@@ -59,6 +59,12 @@ cp -R ./static/js/pdf-js /path/to/your/hugo/website/static/js/
 In your Hugo website place the following shortcode in any of the markdown pages. 
 ```
 {{< embed-pdf url="./path/to/pdf/file/example.pdf" >}}
+
+```
+
+To hide pagination
+```
+{{< embed-pdf url="./path/to/pdf/file/example.pdf" hidePaginator="true" >}}
 ```
 
 ### Parameters
