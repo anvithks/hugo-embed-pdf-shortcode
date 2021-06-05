@@ -28,6 +28,7 @@ window.onload = function() {
 // header on that server.
 var url = "{{.Site.BaseURL}}" + '{{ .Get "url" }}';
 var hidePaginator = "{{ .Get "hidePaginator" }}";
+var selectedPageNum = parseInt("{{ .Get "renderPageNum" }}") || 1;
 
 // Loaded via <script> tag, create shortcut to access PDF.js exports.
 var pdfjsLib = window['pdfjs-dist/build/pdf'];
@@ -37,7 +38,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = "{{.Site.BaseURL}}" + '/js/pdf-js/build
 
 // Change the Scale value for lower or higher resolution.
 var pdfDoc = null,
-    pageNum = 1,
+    pageNum = selectedPageNum,
     pageRendering = false,
     pageNumPending = null,
     scale = 3,
@@ -126,7 +127,13 @@ document.getElementById('next').addEventListener('click', onNextPage);
  */
 pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
   pdfDoc = pdfDoc_;
-  document.getElementById('page_count').textContent = pdfDoc.numPages;
+  var numPages = pdfDoc.numPages;
+  document.getElementById('page_count').textContent = numPages;
+  
+  // If the user passed in a number that is out of range, render the last page.
+  if(pageNum > numPages) {
+    pageNum = numPages
+  }
 
   // Initial/first page rendering
   renderPage(pageNum);

@@ -67,9 +67,15 @@ To hide pagination
 {{< embed-pdf url="./path/to/pdf/file/example.pdf" hidePaginator="true" >}}
 ```
 
+To render a selected page number
+```
+{{< embed-pdf url="./path/to/pdf/file/example.pdf" renderPageNum="5" >}}
+```
+
 ### Parameters
 - **url (required)** : The relative location of the file.  
 - **hidePaginator (optional)**: Boolean which expects `true` or `false`. Hides the paginator for single page documents. 
+- **renderPageNum (optional)**: Integer which expects any number from `1` up to the last page number in the document. Will render that specific page on initial load.
 <br />
 
 **Note:** Currently supports local file embed. If absolute URL from the remote server is provided, configure the CORS header on that server.
