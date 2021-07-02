@@ -43,16 +43,6 @@ cp ./layouts/shortcodes/embed-pdf.html /path/to/your/hugo/website/layouts/shortc
 ```  
 <br />
 
-3. Copy the pdf.js library files from `./static/js/pdf-js` to `./static/js` in your Hugo website directory.  
-<br />
-
-**Note:** If you do not have a `./static/js` directory you can create it.  
-
-```shell
-cp -R ./static/js/pdf-js /path/to/your/hugo/website/static/js/
-```  
-<br />
-
 ## Usage  
 [\[Back to Top\]](#table-of-contents)
 
