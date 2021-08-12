@@ -33,7 +33,7 @@ git clone https://github.com/anvithks/hugo-embed-pdf-shortcode.git
 cd hugo-embed-pdf-shortcode
 ```
 
-2. Copy the file `.layouts/shortcodes/embed-pdf.html` to  `./layouts/shortcodes` in your Hugo website directory.  
+2. Copy the file `./layouts/shortcodes/embed-pdf.html` to  `./layouts/shortcodes` in your Hugo website directory.  
 <br />
 
 **Note:** If you do not have a `./layouts/shortcodes` directory you can create it.  
