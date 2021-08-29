@@ -71,9 +71,12 @@ To hide pagination
 To render a selected page number
 ```
 {{< embed-pdf url="./path/to/pdf/file/example.pdf" renderPageNum="5" >}}
+```
+
 To hide loading spinner
 ```
 {{< embed-pdf url="./path/to/pdf/file/example.pdf" hideLoader="true" >}}
+```
 
 ### Parameters
 - **url (required)** : The relative location of the file.  
