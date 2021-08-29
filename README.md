@@ -67,9 +67,15 @@ To hide pagination
 {{< embed-pdf url="./path/to/pdf/file/example.pdf" hidePaginator="true" >}}
 ```
 
+To hide loading spinner
+```
+{{< embed-pdf url="./path/to/pdf/file/example.pdf" hideLoader="true" >}}
+```
+
 ### Parameters
 - **url (required)** : The relative location of the file.  
 - **hidePaginator (optional)**: Boolean which expects `true` or `false`. Hides the paginator for single page documents. 
+- **hideLoader (optional)**: Boolean which expects `true` or `false`. Hides the loading spinner while your document loads. 
 <br />
 
 **Note:** Currently supports local file embed. If absolute URL from the remote server is provided, configure the CORS header on that server.
