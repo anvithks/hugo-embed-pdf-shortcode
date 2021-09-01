@@ -9,6 +9,7 @@
 * [Usage](#usage)  
 * [FAQ](#faq)  
 * [Support](#support)  
+* [Who uses embed-pdf](#who-uses-embed-pdf)
 * [License](#license)  
 
 ---
@@ -99,6 +100,8 @@ You an reach me at:
 
 For any bugs, enhancement requests, feature requests please raise issues [here](https://github.com/anvithks/hugo-embed-pdf-shortcode/issues)
 
+## Who uses embed-pdf
+[\[Back to Top\]](#table-of-contents)
 
 ## License  
 [\[Back to Top\]](#table-of-contents)
