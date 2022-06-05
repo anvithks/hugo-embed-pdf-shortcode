@@ -44,7 +44,23 @@ cp ./layouts/shortcodes/embed-pdf.html /path/to/your/hugo/website/layouts/shortc
 ```  
 <br />
 
-3. Copy the pdf.js library files from `./static/js/pdf-js` to `./static/js` in your Hugo website directory.  
+3. Copy the file `./layouts/partials/embed-pdf-dependencies.html` to  `./layouts/partials` in your Hugo website directory.
+<br />
+
+```shell
+cp ./layouts/partials/embed-pdf-dependencies.html /path/to/your/hugo/website/layouts/partials
+```
+<br />
+
+4. Add the `embed-pdf-dependencies.html` partial to your theme.
+
+You'll want to add the following line to a layout in your `partials` directory responsible for generating the `<head>` section of your blog. This will include the JavaScript dependencies and CSS styles for the `hugo-embed-pdf` shortcode exactly once on pages that use it.
+
+```
+{{ partial "embed-pdf-dependencies.html" . }}
+```
+
+5. Copy the pdf.js library files from `./static/js/pdf-js` to `./static/js` in your Hugo website directory.
 <br />
 
 **Note:** If you do not have a `./static/js` directory you can create it.  
