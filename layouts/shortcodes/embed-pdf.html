@@ -1,6 +1,24 @@
+{{/*  Source: https://github.com/anvithks/hugo-embed-pdf-shortcode
+      updated from here to display all pages instead of a pagination: https://github.com/SuryaThiru/portfolio/blob/main/layouts/shortcodes/embed-pdf.html  */}}
+
 <script type="text/javascript" src='{{"/js/pdf-js/build/pdf.js" | relURL}}'></script>
 
 <style>
+#embed-pdf-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  /* overflow-y:scroll; */
+}
+
+.pdf-canvas {
+  border: 1px solid black;
+  direction: ltr;
+  width: 100%;
+  height: auto;
+  display: none;
+}
+
 #the-canvas {
   border: 1px solid black;
   direction: ltr;
@@ -9,11 +27,6 @@
   display: none;
 }
 
-#paginator {
-  display: none;
-  text-align: center;
-  margin-bottom: 10px;
-}
 
 #loadingWrapper {
   display: none;
@@ -34,6 +47,21 @@
   -webkit-animation: spin 1s ease-in-out infinite;
 }
 
+{{/*  Download link  */}}
+
+#overlayText > a:link{
+  color: rgb(83, 156, 215);
+}
+
+#overlayText {
+  position: absolute;
+  word-wrap: break-word;
+  right: 5px;
+  top: 5px;
+}
+
+
+
 @keyframes spin {
   to { -webkit-transform: rotate(360deg); }
 }
@@ -42,17 +70,16 @@
 }
 </style>
 
-<div id="paginator">
-    <button id="prev">Previous</button>
-    <button id="next">Next</button>
-    &nbsp; &nbsp;
-    <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
-</div>
 <div id="embed-pdf-container">
-    <div id="loadingWrapper">
-      <div id="loading"></div>
-    </div>
-    <canvas id="the-canvas"></canvas>
+  <div id="loadingWrapper">
+    <div id="loading"></div>
+  </div>
+  <div id="overlayText">
+    <a href="{{ .Get "url" }}" download>
+      <i class="fas fa-download fa-2x"></i>
+    </a>
+  </div>
+  <!-- Dynamically add canvas here -->
 </div>
 
 <script type="text/javascript">
@@ -60,10 +87,9 @@ window.onload = function() {
 // If absolute URL from the remote server is provided, configure the CORS
 // header on that server.
 var url = "{{.Site.BaseURL}}" + '{{ .Get "url" }}';
+// Troubleshooting: Try this instead: var url = '{{ .Get "url" }}';
 
-var hidePaginator = "{{ .Get "hidePaginator" }}" === "true";
 var hideLoader = "{{ .Get "hideLoader" }}" === "true";
-var selectedPageNum = parseInt("{{ .Get "renderPageNum" }}") || 1;
 
 // Loaded via <script> tag, create shortcut to access PDF.js exports.
 var pdfjsLib = window['pdfjs-dist/build/pdf'];
@@ -71,20 +97,16 @@ var pdfjsLib = window['pdfjs-dist/build/pdf'];
 // The workerSrc property shall be specified.
 pdfjsLib.GlobalWorkerOptions.workerSrc = "{{.Site.BaseURL}}" + '/js/pdf-js/build/pdf.worker.js';
 
-// Change the Scale value for lower or higher resolution.
+// Change the Scale value for lower or higher resolution. Start from first page.
 var pdfDoc = null,
-    pageNum = selectedPageNum,
+    pageNum = 1,
     pageRendering = false,
     pageNumPending = null,
     scale = 3,
-    canvas = document.getElementById('the-canvas'),
-    ctx = canvas.getContext('2d'),
-    paginator = document.getElementById("paginator"),
     loadingWrapper = document.getElementById('loadingWrapper');
 
 
 // Attempt to show paginator and loader if enabled
-showPaginator();
 showLoader();
 
 /**
@@ -95,9 +117,15 @@ function renderPage(num) {
   pageRendering = true;
   // Using promise to fetch the page
   pdfDoc.getPage(num).then(function(page) {
+    var pdf_cont = document.getElementById('embed-pdf-container');
+    var canvas = getCanvas(num);
+    pdf_cont.appendChild(canvas);
+
     var viewport = page.getViewport({scale: scale});
     canvas.height = viewport.height;
     canvas.width = viewport.width;
+
+    var ctx = canvas.getContext('2d');
 
     // Render PDF page into canvas context
     var renderContext = {
@@ -109,8 +137,8 @@ function renderPage(num) {
     // Wait for rendering to finish
     renderTask.promise.then(function() {
       pageRendering = false;
-      showContent();
-      
+      showContent(canvas);
+
       if (pageNumPending !== null) {
         // New page rendering is pending
         renderPage(pageNumPending);
@@ -119,14 +147,19 @@ function renderPage(num) {
     });
   });
 
-  // Update page counters
-  document.getElementById('page_num').textContent = num;
+}
+
+// Render all pages
+function renderAllPages() {
+  for (var i = 1; i <= pdfDoc.numPages; i++) {
+    renderPage(i);
+  }
 }
 
 /**
  * Hides loader and shows canvas
  */
-function showContent() {
+function showContent(canvas) {
   loadingWrapper.style.display = 'none';
   canvas.style.display = 'block';
 }
@@ -135,17 +168,7 @@ function showContent() {
  * If we haven't disabled the loader, show loader and hide canvas
  */
 function showLoader() {
-  if(hideLoader) return
   loadingWrapper.style.display = 'flex';
-  canvas.style.display = 'none';
-}
-
-/**
- * If we haven't disabled the paginator, show paginator
- */
-function showPaginator() {
-  if(hidePaginator) return
-  paginator.style.display = 'block';
 }
 
 /**
@@ -160,45 +183,24 @@ function queueRenderPage(num) {
   }
 }
 
-/**
- * Displays previous page.
- */
-function onPrevPage() {
-  if (pageNum <= 1) {
-    return;
-  }
-  pageNum--;
-  queueRenderPage(pageNum);
-}
-document.getElementById('prev').addEventListener('click', onPrevPage);
 
 /**
- * Displays next page.
+ * Adds a canvas to DOM
  */
-function onNextPage() {
-  if (pageNum >= pdfDoc.numPages) {
-    return;
-  }
-  pageNum++;
-  queueRenderPage(pageNum);
+function getCanvas(num) {
+  var canvasId = 'embed-pdf-container-' + num;
+  var canvas = document.createElement("canvas");
+  canvas.id = canvasId;
+  canvas.className = 'pdf-canvas';
+  return canvas
 }
-document.getElementById('next').addEventListener('click', onNextPage);
 
 /**
  * Asynchronously downloads PDF.
  */
 pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
   pdfDoc = pdfDoc_;
-  var numPages = pdfDoc.numPages;
-  document.getElementById('page_count').textContent = numPages;
-  
-  // If the user passed in a number that is out of range, render the last page.
-  if(pageNum > numPages) {
-    pageNum = numPages
-  }
-
-  // Initial/first page rendering
-  renderPage(pageNum);
+  renderAllPages();
 });
 }
 
