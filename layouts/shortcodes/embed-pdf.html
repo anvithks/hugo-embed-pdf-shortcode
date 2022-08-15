@@ -8,6 +8,7 @@
   position: relative;
   width: 100%;
   height: auto;
+  min-height: 20vh;
   /* overflow-y:scroll; */
 }
 
@@ -49,15 +50,31 @@
 
 {{/*  Download link  */}}
 
-#overlayText > a:link{
-  color: rgb(83, 156, 215);
-}
+
 
 #overlayText {
-  position: absolute;
   word-wrap: break-word;
-  right: 5px;
-  top: 5px;
+  display: grid;
+  justify-content: end;
+}
+
+#overlayText a {
+  position: relative;
+  top: 10px;
+  right: 4px;
+  color: #000;
+  margin: auto;
+  background-color: #eeeeee;
+  padding: 0.3em 1em;
+  border: solid 2px;
+  border-radius: 12px;
+  border-color: #00000030;
+  text-decoration: none;
+}
+
+#overlayText svg {
+  max-width: 1.4em;
+  max-height: 1.4em;
 }
 
 
