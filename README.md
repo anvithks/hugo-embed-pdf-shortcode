@@ -1,5 +1,4 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) ![visitors](https://visitor-badge.glitch.me/badge?page_id=anvithks.hugo-embed-pdf-shortcode)
-# hugo-embed-pdf-shortcode  
 ---  
 # Table of Contents  
 
@@ -14,45 +13,30 @@
 
 ---
 
-## Introduction  
-[\[Back to Top\]](#table-of-contents)
+## Introduction
 
 This is a [Hugo Shortcode](https://gohugo.io/extras/shortcodes/) developed for use in [Hugo](https://gohugo.io/) based websites. This shortcode allows you to embed a PDF file in a page on your Hugo website. It is developed using the [PDF.js](https://mozilla.github.io/pdf.js/) library by Mozilla.
 
 ![hugo-embed-pdf-shortcode cover](https://github.com/anvithks/hugo-embed-pdf-shortcode/blob/master/hugo-embed-pdf-cover.png)
 
-## Setup  
-[\[Back to Top\]](#table-of-contents)
+## Setup
 
-**Note:**  This shortcode is for use in Hugo based websites. It will not work anywhere else. 
+**Note:**  This shortcode is for use in Hugo based websites. It will not work anywhere else.
 
-1. Clone this repository
-<br />
+1.Install as a Git submodule
 
 ```shell
-git clone https://github.com/anvithks/hugo-embed-pdf-shortcode.git
-cd hugo-embed-pdf-shortcode
+git submodule add  https://github.com/anvithks/hugo-embed-pdf-shortcode.git themes/hugo-embed-pdf-shortcode
 ```
 
-2. Copy the file `./layouts/shortcodes/embed-pdf.html` to  `./layouts/shortcodes` in your Hugo website directory.  
-<br />
+2. Edit `config.toml`:
 
-**Note:** If you do not have a `./layouts/shortcodes` directory you can create it.  
+```
+theme = ["hugo-embed-pdf-shortcode", "YourCurrentTheme"]
+enableInlineShortcodes = true
+```
 
-```shell
-cp ./layouts/shortcodes/embed-pdf.html /path/to/your/hugo/website/layouts/shortcodes
-```  
-<br />
-
-3. Copy the pdf.js library files from `./static/js/pdf-js` to `./static/js` in your Hugo website directory.  
-<br />
-
-**Note:** If you do not have a `./static/js` directory you can create it.  
-
-```shell
-cp -R ./static/js/pdf-js /path/to/your/hugo/website/static/js/
-```  
-<br />
+To learn more about "Theme components", see [the Hugo documentation](https://gohugo.io/hugo-modules/theme-components/)
 
 ## Usage  
 [\[Back to Top\]](#table-of-contents)
