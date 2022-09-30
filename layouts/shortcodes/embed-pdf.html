@@ -1,3 +1,5 @@
+{{- if not ($.Page.Scratch.Get "embed-pdf-count") -}}
+
 <script type="text/javascript" src='{{"/js/pdf-js/build/pdf.js" | relURL}}'></script>
 
 <style>
@@ -41,6 +43,10 @@
   to { -webkit-transform: rotate(360deg); }
 }
 </style>
+
+{{- end -}}
+
+{{- $.Page.Scratch.Add "embed-pdf-count" 1 -}}
 
 <div id="paginator">
     <button id="prev">Previous</button>
