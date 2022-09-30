@@ -79,8 +79,8 @@ View the PDF file <a class="pdf-source" id="pdf-source-noscript-{{ substr (.Get 
     var pdfjsLib = window['pdfjs-dist/build/pdf'];
 
     // The workerSrc property shall be specified.
-    if(pdfjsLib.GlobalWorkerOptions.workerSrc == '')
-      pdfjsLib.GlobalWorkerOptions.workerSrc = "{{.Site.BaseURL}}" + '/pub/js/pdfjs/build/pdf.worker.js';
+    if (pdfjsLib.GlobalWorkerOptions.workerSrc == '')
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "{{.Site.BaseURL}}" + 'js/pdf-js/build/pdf.worker.js';
 
     // Change the Scale value for lower or higher resolution.
     var pdfDoc = null,
