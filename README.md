@@ -10,7 +10,6 @@ This is a fork of [hugo-embed-pdf-shortcode](https://github.com/anvithks/hugo-em
 * [Usage](#usage)  
 * [FAQ](#faq)  
 * [Support](#support)  
-* [Who uses embed-pdf](#who-uses-hugo-embed-pdf-shortcode)
 * [License](#license)  
 
 ---
@@ -48,7 +47,7 @@ module:
 
 In your Hugo website place the following shortcode in any of the markdown pages. 
 ```
-{{< embed-pdf url="./path/to/pdf/file/example.pdf" >}}
+{{< embed-pdf url="<path>/example.pdf" >}}
 
 ```
 
@@ -78,21 +77,19 @@ To hide loading spinner
 
 **Note:** Currently supports local file embed. If absolute URL from the remote server is provided, configure the CORS header on that server.
 
-
 ## FAQ  
 [\[Back to Top\]](#table-of-contents)
 
 ## Support  
 [\[Back to Top\]](#table-of-contents)
+
 You an reach me at:
+- Twitter : [@alanctanner](https://twitter.com/alanctanner)
+
+You can reach the orignal author of [hugo-embed-pdf-shortcode](https://github.com/anvithks/hugo-embed-pdf-shortcode) at:
 - Twitter : [@anvith3](https://twitter.com/anvith3)
 
-For any bugs, enhancement requests, feature requests please raise issues [here](https://github.com/anvithks/hugo-embed-pdf-shortcode/issues)
-
-## Who uses Hugo Embed Pdf Shortcode
-[\[Back to Top\]](#table-of-contents)
-
-[Dirk's Changelog](https://changelog.deimeke.ruhr/2019/08/11/workshop-20190811/)
+For any bugs, enhancement requests, feature requests please raise issues [here](https://github.com/AlanTanner/pdfjs-hugo-module/issues)
 
 ## License  
 [\[Back to Top\]](#table-of-contents)
