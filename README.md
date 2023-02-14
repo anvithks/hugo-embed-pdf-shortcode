@@ -1,5 +1,6 @@
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) ![visitors](https://visitor-badge.glitch.me/badge?page_id=AlanTanner.pdfjs-hugo-module)
 # pdfjs-hugo-module 
+This is a fork of [hugo-embed-pdf-shortcode](https://github.com/anvithks/hugo-embed-pdf-shortcode) created by [Anvinth KS](https://github.com/anvithks) with pdf.js v3.3.122 and optimized for use as a Hugo Module.
 ---  
 # Table of Contents  
 
