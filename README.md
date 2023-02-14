@@ -1,5 +1,5 @@
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) ![visitors](https://visitor-badge.glitch.me/badge?page_id=anvithks.hugo-embed-pdf-shortcode)
-# hugo-embed-pdf-shortcode  
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+# pdfjs-hugo-module 
 ---  
 # Table of Contents  
 
@@ -26,32 +26,20 @@ This is a [Hugo Shortcode](https://gohugo.io/extras/shortcodes/) developed for u
 
 **Note:**  This shortcode is for use in Hugo based websites. It will not work anywhere else. 
 
-1. Clone this repository
-<br />
+Init your project as a hugo module if not already.
 
-```shell
-git clone https://github.com/anvithks/hugo-embed-pdf-shortcode.git
-cd hugo-embed-pdf-shortcode
+```
+hugo mod init <your_repo_url>
 ```
 
-2. Copy the file `./layouts/shortcodes/embed-pdf.html` to  `./layouts/shortcodes` in your Hugo website directory.  
-<br />
+Add this module to site config. The following is an example of yaml, and the same is true for toml and json.
 
-**Note:** If you do not have a `./layouts/shortcodes` directory you can create it.  
+```
+module:
+  imports:
+  - path: github.com/AlanTanner/pdfjs-hugo-module
+```
 
-```shell
-cp ./layouts/shortcodes/embed-pdf.html /path/to/your/hugo/website/layouts/shortcodes
-```  
-<br />
-
-3. Copy the pdf.js library files from `./static/js/pdf-js` to `./static/js` in your Hugo website directory.  
-<br />
-
-**Note:** If you do not have a `./static/js` directory you can create it.  
-
-```shell
-cp -R ./static/js/pdf-js /path/to/your/hugo/website/static/js/
-```  
 <br />
 
 ## Usage  
@@ -65,13 +53,13 @@ In your Hugo website place the following shortcode in any of the markdown pages.
 
 To hide pagination
 ```
-{{< embed-pdf url="./path/to/pdf/file/example.pdf" hidePaginator="true" >}}
+{{< embed-pdf url="<path>/example.pdf" hidePaginator="true" >}}
 ```
 
 
 To render a selected page number
 ```
-{{< embed-pdf url="./path/to/pdf/file/example.pdf" renderPageNum="5" >}}
+{{< embed-pdf url="<path>/example.pdf" renderPageNum="5" >}}
 ```
 
 To hide loading spinner
