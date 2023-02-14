@@ -65,7 +65,7 @@ var hideLoader = '{{ .Get "hideLoader" }}' === "true";
 var selectedPageNum = parseInt('{{ .Get "renderPageNum" }}') || 1;
 
 // Loaded via <script> tag, create shortcut to access PDF.js exports.
-var pdfjsLib = window['pdfjs-3/build/pdf'];
+var pdfjsLib = window['pdfjs-dist/build/pdf'];
 
 // The workerSrc property shall be specified.
 pdfjsLib.GlobalWorkerOptions.workerSrc = "{{.Site.BaseURL}}" + '/js/pdfjs-3/build/pdf.worker.js';
