@@ -1,9 +1,0 @@
-module:
-  hugoVersion:
-    min: "0.61.0"
-  mounts:
-  - source: layouts/shortcodes
-    target: layouts/shortcodes
-  mounts:
-  - source: static
-    target: static
