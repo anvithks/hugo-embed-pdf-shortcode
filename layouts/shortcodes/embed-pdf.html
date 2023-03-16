@@ -1,6 +1,6 @@
 {{- if not ($.Page.Scratch.Get "embed-pdf-count") -}}
 
-<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js" integrity="sha256-UZQVSEoMbJ82/3uFjt4mYOTVVHIImtkp7u3L6LMH6/Y=" crossorigin="anonymous"></script>
+<script type="text/javascript" src= '/js/pdf-js/build/pdf.js'></script>
 
 <style>
   #embed-pdf-container {
@@ -28,7 +28,7 @@
   }
   
   
-  #loadingWrapper {
+  .pdf-loadingWrapper {
     display: none;
     justify-content: center;
     align-items: center;
@@ -36,7 +36,7 @@
     height: 350px;
   }
   
-  #loading {
+  .pdf-loading {
     display: inline-block;
     width: 50px;
     height: 50px;
@@ -121,7 +121,7 @@ View the PDF file <a class="pdf-source" id="pdf-source-noscript-{{ substr (.Get 
 
     // The workerSrc property shall be specified.
     if (pdfjsLib.GlobalWorkerOptions.workerSrc == '')
-      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.worker.min.js';
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "{{.Site.BaseURL}}" + 'js/pdf-js/build/pdf.worker.js';
 
     // Change the Scale value for lower or higher resolution.
     var pdfDoc = null,
