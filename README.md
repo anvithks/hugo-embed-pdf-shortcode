@@ -1,5 +1,6 @@
 [![License](https://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://badges.mit-license.org) ![visitors](https://visitor-badge.glitch.me/badge?page_id=anvithks.hugo-embed-pdf-shortcode)
 # hugo-embed-pdf-shortcode  
+
 ---  
 # Table of Contents  
 
@@ -14,17 +15,40 @@
 
 ---
 
-## Introduction  
+## Introduction
 [\[Back to Top\]](#table-of-contents)
 
 This is a [Hugo Shortcode](https://gohugo.io/extras/shortcodes/) developed for use in [Hugo](https://gohugo.io/) based websites. This shortcode allows you to embed a PDF file in a page on your Hugo website. It is developed using the [PDF.js](https://mozilla.github.io/pdf.js/) library by Mozilla.
 
 ![hugo-embed-pdf-shortcode cover](hugo-embed-pdf-cover.png)
 
-## Setup  
+## Setup
 [\[Back to Top\]](#table-of-contents)
 
-**Note:**  This shortcode is for use in Hugo based websites. It will not work anywhere else. 
+**Note:**  This shortcode is for use in Hugo based websites. It will not work anywhere else.
+
+Hugo embed-pdf can be installed in two ways.
+
+### Method 1 - Install as a Git submodule
+
+1. Add this shortcode as a Git submodule
+
+```shell
+git submodule add  https://github.com/anvithks/hugo-embed-pdf-shortcode.git themes/hugo-embed-pdf-shortcode
+```
+
+2. Edit `config.toml` as follows
+
+```
+theme = ["hugo-embed-pdf-shortcode", "YourCurrentTheme"]
+enableInlineShortcodes = true
+```
+
+**To learn more about "Theme components", see [the Hugo documentation](https://gohugo.io/hugo-modules/theme-components/)**
+
+<hr />
+
+### Method 2 - Clone this repository
 
 1. Clone this repository
 <br />
@@ -52,7 +76,7 @@ cp ./layouts/shortcodes/embed-pdf.html /path/to/your/hugo/website/layouts/shortc
 ```shell
 cp -R ./static/js/pdf-js /path/to/your/hugo/website/static/js/
 ```  
-<br />
+<hr />
 
 ## Usage  
 [\[Back to Top\]](#table-of-contents)
@@ -81,8 +105,11 @@ To hide loading spinner
 
 ### Parameters
 - **url (required)** : The relative location of the file.  
+
 - **hidePaginator (optional)**: Boolean which expects `true` or `false`. Hides the paginator for single page documents. 
+
 - **renderPageNum (optional)**: Integer which expects any number from `1` up to the last page number in the document. Will render that specific page on initial load.
+
 - **hideLoader (optional)**: Boolean which expects `true` or `false`. Hides the loading spinner while your document loads. 
 
 <br />
