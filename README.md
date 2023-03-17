@@ -120,6 +120,31 @@ To hide loading spinner
 ## FAQ  
 [\[Back to Top\]](#table-of-contents)
 
+1. I have installed hugo-embed-pdf in my website locally by cloning the repository and copying the files, but it does not work?  
+A. hugo-embed-pdf uses pdf.js from mozilla. Pdf.js is now being served using a CDN.  
+If you would like to use a local copy of PDf.js then you can make the following changes to the `embed-pdf.html` file.
+- Change the script tag at the top of the file from
+```js
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js" integrity="sha256-UZQVSEoMbJ82/3uFjt4mYOTVVHIImtkp7u3L6LMH6/Y=" crossorigin="anonymous"></script>
+```
+
+**to**  
+
+```js
+<script type="text/javascript" src='{{"/js/pdf-js/build/pdf.js" | relURL}}'></script>
+```
+- Change the path to the `pdf.worker.js` file at line number 124 from  
+
+```js
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.worker.min.js';
+```
+
+**to**  
+
+```js
+pdfjsLib.GlobalWorkerOptions.workerSrc = "{{.Site.BaseURL}}" + 'js/pdf-js/build/pdf.worker.js';
+```
+
 ## Support  
 [\[Back to Top\]](#table-of-contents)
 You an reach me at:
