@@ -1,5 +1,6 @@
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) ![visitors](https://visitor-badge.glitch.me/badge?page_id=anvithks.hugo-embed-pdf-shortcode)
+[![License](https://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://badges.mit-license.org) ![visitors](https://visitor-badge.glitch.me/badge?page_id=anvithks.hugo-embed-pdf-shortcode)
 # hugo-embed-pdf-shortcode  
+
 ---  
 # Table of Contents  
 
@@ -14,17 +15,40 @@
 
 ---
 
-## Introduction  
+## Introduction
 [\[Back to Top\]](#table-of-contents)
 
 This is a [Hugo Shortcode](https://gohugo.io/extras/shortcodes/) developed for use in [Hugo](https://gohugo.io/) based websites. This shortcode allows you to embed a PDF file in a page on your Hugo website. It is developed using the [PDF.js](https://mozilla.github.io/pdf.js/) library by Mozilla.
 
-![hugo-embed-pdf-shortcode cover](https://github.com/anvithks/hugo-embed-pdf-shortcode/blob/master/hugo-embed-pdf-cover.png)
+![hugo-embed-pdf-shortcode cover](hugo-embed-pdf-cover.png)
 
-## Setup  
+## Setup
 [\[Back to Top\]](#table-of-contents)
 
-**Note:**  This shortcode is for use in Hugo based websites. It will not work anywhere else. 
+**Note:**  This shortcode is for use in Hugo based websites. It will not work anywhere else.
+
+Hugo embed-pdf can be installed in two ways.
+
+### Method 1 - Install as a Git submodule
+
+1. Add this shortcode as a Git submodule
+
+```shell
+git submodule add  https://github.com/anvithks/hugo-embed-pdf-shortcode.git themes/hugo-embed-pdf-shortcode
+```
+
+2. Edit `config.toml` as follows
+
+```
+theme = ["hugo-embed-pdf-shortcode", "YourCurrentTheme"]
+enableInlineShortcodes = true
+```
+
+**To learn more about "Theme components", see [the Hugo documentation](https://gohugo.io/hugo-modules/theme-components/)**
+
+<hr />
+
+### Method 2 - Clone this repository
 
 1. Clone this repository
 <br />
@@ -52,7 +76,7 @@ cp ./layouts/shortcodes/embed-pdf.html /path/to/your/hugo/website/layouts/shortc
 ```shell
 cp -R ./static/js/pdf-js /path/to/your/hugo/website/static/js/
 ```  
-<br />
+<hr />
 
 ## Usage  
 [\[Back to Top\]](#table-of-contents)
@@ -81,8 +105,11 @@ To hide loading spinner
 
 ### Parameters
 - **url (required)** : The relative location of the file.  
+
 - **hidePaginator (optional)**: Boolean which expects `true` or `false`. Hides the paginator for single page documents. 
+
 - **renderPageNum (optional)**: Integer which expects any number from `1` up to the last page number in the document. Will render that specific page on initial load.
+
 - **hideLoader (optional)**: Boolean which expects `true` or `false`. Hides the loading spinner while your document loads. 
 
 <br />
@@ -92,6 +119,31 @@ To hide loading spinner
 
 ## FAQ  
 [\[Back to Top\]](#table-of-contents)
+
+1. I have installed hugo-embed-pdf in my website locally by cloning the repository and copying the files, but it does not work?  
+A. hugo-embed-pdf uses pdf.js from mozilla. Pdf.js is now being served using a CDN.  
+If you would like to use a local copy of PDf.js then you can make the following changes to the `embed-pdf.html` file.
+- Change the script tag at the top of the file from
+```js
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js" integrity="sha256-UZQVSEoMbJ82/3uFjt4mYOTVVHIImtkp7u3L6LMH6/Y=" crossorigin="anonymous"></script>
+```
+
+**to**  
+
+```js
+<script type="text/javascript" src='{{"/js/pdf-js/build/pdf.js" | relURL}}'></script>
+```
+- Change the path to the `pdf.worker.js` file at line number 124 from  
+
+```js
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.worker.min.js';
+```
+
+**to**  
+
+```js
+pdfjsLib.GlobalWorkerOptions.workerSrc = "{{.Site.BaseURL}}" + 'js/pdf-js/build/pdf.worker.js';
+```
 
 ## Support  
 [\[Back to Top\]](#table-of-contents)
@@ -108,6 +160,6 @@ For any bugs, enhancement requests, feature requests please raise issues [here](
 ## License  
 [\[Back to Top\]](#table-of-contents)
 
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+[![License](https://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://badges.mit-license.org)
 
-- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+- **[MIT license](https://opensource.org/licenses/mit-license.php)**
