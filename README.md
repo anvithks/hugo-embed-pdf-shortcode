@@ -155,7 +155,8 @@ For any bugs, enhancement requests, feature requests please raise issues [here](
 ## Who uses Hugo Embed Pdf Shortcode
 [\[Back to Top\]](#table-of-contents)
 
-[Dirk's Changelog](https://changelog.deimeke.ruhr/2019/08/11/workshop-20190811/)
+[Dirk's Changelog](https://changelog.deimeke.ruhr/2019/08/11/workshop-20190811/)  
+[SYSADMIN - Administration, security and hardening of Linux](https://sysadmin.info.pl/pl/blog/moja-praca-inzynierska/)  
 
 ## License  
 [\[Back to Top\]](#table-of-contents)
