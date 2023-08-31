@@ -34,6 +34,7 @@
     align-items: center;
     width: 100%;
     height: 350px;
+    float: left;
   }
   
   .pdf-loading {
@@ -128,7 +129,7 @@ View the PDF file <a class="pdf-source" id="pdf-source-noscript-{{ substr (.Get 
 
     // The workerSrc property shall be specified.
     if (pdfjsLib.GlobalWorkerOptions.workerSrc == '')
-      pdfjsLib.GlobalWorkerOptions.workerSrc = "{{.Site.BaseURL}}" + 'js/pdf-js/build/pdf.worker.js';
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "{{.Site.BaseURL}}" + '/js/pdf-js/build/pdf.worker.js';
 
     // Change the Scale value for lower or higher resolution.
     var pdfDoc = null,
@@ -203,8 +204,12 @@ View the PDF file <a class="pdf-source" id="pdf-source-noscript-{{ substr (.Get 
      * If we haven't disabled the paginator, show paginator
      */
     function showPaginator() {
-      if(hidePaginator) return
-      paginator.style.display = 'block';
+      if(hidePaginator) {
+        paginator.style.display = 'none';
+      }
+      else {
+        paginator.style.display = 'block';
+      }
     }
 
     /**
