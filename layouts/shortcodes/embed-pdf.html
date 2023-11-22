@@ -104,6 +104,7 @@
 
 <div class="pdf-paginator" id="pdf-paginator-{{ substr (.Get "url" | md5) 0 8 }}">
     <button id="pdf-prev-{{ substr (.Get "url" | md5) 0 8 }}">Previous</button>
+    <input type="number" value="1" id="pdf-desired-page-{{ substr (.Get "url" | md5) 0 8 }}" />
     <button id="pdf-next-{{ substr (.Get "url" | md5) 0 8 }}">Next</button> &nbsp; &nbsp;
     <span>
       <span class="pdf-pagenum" id="pdf-pagenum-{{ substr (.Get "url" | md5) 0 8 }}"></span> / <span class="pdf-pagecount" id="pdf-pagecount-{{ substr (.Get "url" | md5) 0 8 }}"></span>
@@ -180,6 +181,7 @@ View the PDF file <a class="pdf-source" id="pdf-source-noscript-{{ substr (.Get 
 
       // Update page counters
       document.getElementById('pdf-pagenum-{{ substr (.Get "url" | md5) 0 8 }}').textContent = num;
+      document.getElementById('pdf-desired-page-{{ substr (.Get "url" | md5) 0 8 }}').value = num;
     }
 
     /**
@@ -230,6 +232,28 @@ View the PDF file <a class="pdf-source" id="pdf-source-noscript-{{ substr (.Get 
       queueRenderPage(pageNum);
     }
     document.getElementById('pdf-prev-{{ substr (.Get "url" | md5) 0 8 }}').addEventListener('click', onPrevPage);
+
+    /**
+     * Displays a desired page.
+     */
+    function onDesiredPage() {
+	// Get the new page number and render it.
+	let desiredPage = document.getElementById('pdf-desired-page-{{ substr (.Get "url" | md5) 0 8 }}').valueAsNumber;
+	pageNum = Math.min(
+		Math.max(desiredPage, 1),
+		pdfDoc.numPages,
+	);
+        queueRenderPage(pageNum);
+    }
+    function onDesiredPageEnter(event) {
+	// Get the key code.
+	const keycode = event.keyCode ? event.keyCode : event.which;
+	if (keycode === 13) {
+		onDesiredPage();
+	}
+    }
+    document.getElementById('pdf-desired-page-{{ substr (.Get "url" | md5) 0 8 }}').addEventListener('keypress', onDesiredPageEnter);
+    document.getElementById('pdf-desired-page-{{ substr (.Get "url" | md5) 0 8 }}').addEventListener('click', onDesiredPage);
 
     /**
      * Displays next page.
